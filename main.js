@@ -60,18 +60,14 @@ $('#joke').on('click',function(){
             'X-Api-Key': 'vtn/UcgxrMs3iP9XSDMXeQ==w0yK9gTiSr75YhGt' 
         },
         success: function (data) {
-            //test
+            // Test logs
             console.log("Data received:", data);
             console.log("Data type:", typeof data);
             console.log("Div exists:", $('#chuck').length);
             
             // Access the joke property of the data object
             $('#chuck').text(data.joke);
-            $('#chuck').fadeIn(500);
-            // OR 
-            // document.getElementById('chuck').textContent = data.joke;
-            
-            console.log("After setting content:", $('#chuck').html());
+            $('#chuck').fadeIn(500); // Fade in the data
         },
     
         error:function (data){
@@ -82,22 +78,25 @@ $('#joke').on('click',function(){
 
 $('#quote').on('click', function(){
     $.ajax({
+        // Where to get data, type of data, api key
         url: "https://api.api-ninjas.com/v1/quotes",
         type: "GET",
         headers:{
             'X-Api-Key': 'vtn/UcgxrMs3iP9XSDMXeQ==w0yK9gTiSr75YhGt' 
         },
 
+        // if else functions
         success: function(data) {
+            // Test logs
             console.log("Data received:", data);
             console.log("Data type:", typeof data);
-            console.log("Div exists:", $('#saying').length);  // Check length instead of html
+            console.log("Div exists:", $('#saying').length);
 
-            // Data is an array, get first quote object
+            // Data is an array, get first quote object, this is confusing. Convert data from object to string?
             const quoteData = data[0];
-            // Access quote and author properties
+            // Access quote and author properties, this makes sense
             $('#saying').text(`${quoteData.quote} - ${quoteData.author}`);
-            $('#saying').fadeIn(500);
+            $('#saying').fadeIn(500); // Fade in data
         },
 
         error: function(data){
