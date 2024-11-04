@@ -1,9 +1,10 @@
 $(document).ready(function() {
-    const $buttons = $('#reveal , #enlarge');
+    const $buttons = $('#reveal , #enlarge, #joke, #quote');
     const shadowColor = '#A9A9A9';
     const shadowHeight = 4;
     const image = new Image();
     image.src= 'image/minimalistcoffee.jpeg';
+    $('#enlarge, #joke, #quote').hide();
     
     // Initial shadow state
     $buttons.css({
@@ -43,9 +44,66 @@ $(document).ready(function() {
 $("#reveal").on('click', function() {
     $('#imageContainer').html('<img src="image/minimalistcoffee.jpeg">');
     $('#enlarge').fadeIn(500);
+    $('#joke').fadeIn(500);
+    $('#quote').fadeIn(500);
 });
 
 $("#enlarge").on('click', function(){
     $('#imageContainer').toggleClass("largeContainer");
 })
+
+$('#joke').on('click',function(){
+    $.ajax({
+        url: "https://api.api-ninjas.com/v1/chucknorris",
+        type: "GET",
+        headers:{
+            'X-Api-Key': 'vtn/UcgxrMs3iP9XSDMXeQ==w0yK9gTiSr75YhGt' 
+        },
+        success: function (data) {
+            //test
+            console.log("Data received:", data);
+            console.log("Data type:", typeof data);
+            console.log("Div exists:", $('#chuck').length);
+            
+            // Access the joke property of the data object
+            $('#chuck').text(data.joke);
+            $('#chuck').fadeIn(500);
+            // OR 
+            // document.getElementById('chuck').textContent = data.joke;
+            
+            console.log("After setting content:", $('#chuck').html());
+        },
+    
+        error:function (data){
+            alert('an error occurred');
+        }
+    })
+});
+
+$('#quote').on('click', function(){
+    $.ajax({
+        url: "https://api.api-ninjas.com/v1/quotes",
+        type: "GET",
+        headers:{
+            'X-Api-Key': 'vtn/UcgxrMs3iP9XSDMXeQ==w0yK9gTiSr75YhGt' 
+        },
+
+        success: function(data) {
+            console.log("Data received:", data);
+            console.log("Data type:", typeof data);
+            console.log("Div exists:", $('#saying').length);  // Check length instead of html
+
+            // Data is an array, get first quote object
+            const quoteData = data[0];
+            // Access quote and author properties
+            $('#saying').text(`${quoteData.quote} - ${quoteData.author}`);
+            $('#saying').fadeIn(500);
+        },
+
+        error: function(data){
+            alert('an error occurred');
+        }
+    })
+})
+
 });
