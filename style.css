@@ -56,6 +56,7 @@ p {
     text-align: center;
     width: 300px;
     height: auto;
+    display: none;
 }
 
 #imageContainer img {
@@ -67,6 +68,7 @@ p {
 
 .largeContainer {
     width: 600px !important;
+    display: none;
 }
 
 .grey {
@@ -85,4 +87,45 @@ p {
     background: #cccccc;
     border-radius: 1em;
     padding: 15px;
+}
+
+.date{
+    display: flex;
+    justify-content: center;     /* Centers horizontally */
+    align-items: center; 
+}
+
+.tabs {
+    width: 50%; /* Or specific width like 800px */
+    max-width: 1000px;
+    margin: 20px auto;
+    /* Make tabs visible on dark background */
+    background: #ffffff;
+    border-radius: 4px;
+    padding: 20px;
+    position:absolute;
+}
+
+.menu {
+    width: 200px; /* Or your preferred width */
+    margin: 20px auto;
+    background: #ffffff;
+    border-radius: 4px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;     /* Stacks children vertically */
+    align-items: center;        /* Centers children horizontally */
+    gap: 20px;                 /* Adds space between elements */
+    width: 100%;
+    padding: 20px;
+}
+
+.widget{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding-left:50px;
 }

@@ -42,14 +42,14 @@ $(document).ready(function() {
 )
 
 $("#reveal").on('click', function() {
-    $('#imageContainer').html('<img src="image/minimalistcoffee.jpeg">');
+    $('#imageContainer').html('<img src="image/minimalistcoffee.jpeg">').fadeIn(1000);
     $('#enlarge').fadeIn(500);
     $('#joke').fadeIn(500);
     $('#quote').fadeIn(500);
 });
 
 $("#enlarge").on('click', function(){
-    $('#imageContainer').toggleClass("largeContainer");
+    $('#imageContainer').toggleClass("largeContainer").fadeIn(1000);
 })
 
 $('#joke').on('click',function(){
@@ -104,5 +104,17 @@ $('#quote').on('click', function(){
         }
     })
 })
+
+$( function() {
+    $( "#menu" ).menu();
+  } );
+
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
 
 });
