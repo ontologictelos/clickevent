@@ -117,4 +117,6 @@ $( function() {
     $( "#tabs" ).tabs();
   } );
 
+  $('input').ColorPicker(options);
+  $('input').ColorPickerSetColor(color);
 });

@@ -129,3 +129,23 @@ p {
     margin-top: 2rem;
     padding-left:50px;
 }
+
+/* Add these to your style.css */
+#colorpicker {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px auto;
+    width: 200px; /* Adjust as needed */
+}
+
+/* Make sure colorpicker is visible on dark background */
+.colorpicker {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    position: absolute;
+    width: 356px;
+    height: 176px;
+    overflow: hidden;
+    z-index: 1000;
+}
